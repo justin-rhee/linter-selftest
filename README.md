@@ -131,7 +131,7 @@ is why this doesn't replace review.
 The clean corpus only covers the shapes that are in it, so a rule firing wrongly
 on some note shape nobody added is a false positive that ships. Each time you
 find one, add that shape to the corpus. That's how the corpus in here grew a note
-reaching its sources through two other notes.
+reaching its sources through two other notes
 
 The rule inventory works by finding `Finding("name"` in the source, so a rule
 building its name from a variable or a formatted string is invisible to the scan.
@@ -189,7 +189,6 @@ problem: [SECURITY.md](SECURITY.md).
 Design decisions and what changed while building it: [docs/ADR.md](docs/ADR.md).
 
 One of a set of small tools I've pulled out of a bigger system I run, where
-agents write the code and plain scripts decide when it's actually done. They all
-share one rule: the machine suggests, a person decides, and nothing quietly goes
-wrong behind your back. More of them on my
+agents write the code and plain scripts decide when it's actually done. I keep the final call for myself, and I'd rather a check be
+annoying than silent. More of them on my
 [GitHub profile](https://github.com/justin-rhee).
