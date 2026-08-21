@@ -120,31 +120,22 @@ If you're copying the shape rather than the file, four parts make it work:
 
 ## What it won't do
 
-The two rules are an example. If you want a real linter for your notes this isn't
-it, and the self-test is the part to take.
-
-It proves a rule can fire, not that the rule is right. A fixture built around a
-misunderstanding of what the rule should catch passes cleanly, and the self-test
-has no way to know your fixture is dishonest. That judgment stays with you, which
-is why this doesn't replace review.
-
-The clean corpus only covers the shapes that are in it, so a rule firing wrongly
-on some note shape nobody added is a false positive that ships. Each time you
-find one, add that shape to the corpus. That's how the corpus in here grew a note
-reaching its sources through two other notes
-
-The rule inventory works by finding `Finding("name"` in the source, so a rule
-building its name from a variable or a formatted string is invisible to the scan.
-
-Note titles are filenames and resolution is case-sensitive, while macOS
-filesystems aren't, so two notes differing only by case are one file on a Mac and
-two on Linux. The self-test refuses to write fixtures that differ only by case,
-but a real corpus of yours can still fall into it.
-
-Verified on Python 3.9.6, with a test asserting the syntax parses under 3.7
-rules, though I haven't run it there, so treat 3.9 as the floor. Windows is
-untested. It's not a security tool either: it catches a rule that can't fire, not
-a rule someone removed on purpose.
+- serve as a real linter for your notes, since the two rules are an example and the
+  self-test is the part worth taking
+- prove a rule is right, only that it can fire, so a fixture built around a
+  misunderstanding of what the rule should catch passes cleanly and the self-test has
+  no way to know your fixture is dishonest
+- cover note shapes that aren't in the clean corpus, so a rule firing wrongly on a
+  shape nobody added is a false positive that ships, and each one you find belongs in
+  the corpus
+- see a rule whose name is built from a variable or a formatted string, since the
+  inventory works by finding `Finding("name"` in the source
+- tell two notes apart when they differ only by case, which is one file on macOS and
+  two on Linux, though the self-test refuses to write fixtures like that
+- run on Windows, which is untested, or below Python 3.9.6, which is the floor I
+  verified; a test asserts the syntax parses under 3.7 rules but I haven't run it there
+- stand in for a security tool, since it catches a rule that can't fire rather than a
+  rule someone removed on purpose
 
 ## How I tested it
 
@@ -188,4 +179,4 @@ problem: [SECURITY.md](SECURITY.md).
 
 Design decisions and what changed while building it: [docs/ADR.md](docs/ADR.md).
 
-This little tool is one of a handful I pulled out of my own day-to-day agent setup. I use them all myself, so when something breaks I usually notice fast. But if you spot something weird, or just want to ask how it works, open an issue. I read every one. More tools on my [GitHub profile](https://github.com/justin-rhee).
+This little tool is one of a handful I pulled out of my own day-to-day agent setup. I use them all myself, so when something breaks I usually notice fast. But if you run into any issues, or anything that looks off, open an issue. I read every one. More tools on my [GitHub profile](https://github.com/justin-rhee).
